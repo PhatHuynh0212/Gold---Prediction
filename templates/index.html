@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Price Predictor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/tippy.js@6/dist/tippy.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../static/style.css" />
+  </head>
+  <body class="bg-gradient-to-r from-blue-500 to-teal-500 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg animate__animated animate__fadeIn w-full max-w-2xl" data-aos="zoom-in">
+      <h1 class="text-4xl font-bold mb-6 text-gray-800 text-center">Gold Price Predictor 📈📉</h1>
+      <form id="prediction-form" class="grid grid-cols-2 gap-6">
+        <div data-aos="fade-right">
+          <label for="Open" class="block text-sm font-medium text-gray-700">Open:
+            <i data-tippy-content="The price at which the gold market opens." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="Open" name="Open" required placeholder="Enter opening price" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-left">
+          <label for="High" class="block text-sm font-medium text-gray-700">High:
+            <i data-tippy-content="The highest price of gold recorded during the trading day." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="High" name="High" required placeholder="Enter highest price" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-right">
+          <label for="Low" class="block text-sm font-medium text-gray-700">Low:
+            <i data-tippy-content="The lowest price of gold recorded during the trading day." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="Low" name="Low" required placeholder="Enter lowest price" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-left">
+          <label for="crude_oil" class="block text-sm font-medium text-gray-700">Crude Oil:
+            <i data-tippy-content="The price of crude oil, which can influence gold prices." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="crude_oil" name="crude_oil" required placeholder="Enter crude oil price" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-right">
+          <label for="euro" class="block text-sm font-medium text-gray-700">Euro:
+            <i data-tippy-content="The exchange rate of euro, which can influence gold prices." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="euro" name="euro" required placeholder="Enter euro exchange rate" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-left">
+          <label for="Stocks" class="block text-sm font-medium text-gray-700">Stocks:
+            <i data-tippy-content="The index of stock prices, which can influence gold prices." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="Stocks" name="Stocks" required placeholder="Enter stocks index" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-right">
+          <label for="usb" class="block text-sm font-medium text-gray-700">USB:
+            <i data-tippy-content="An index related to USB, which can influence gold prices." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="usb" name="usb" required placeholder="Enter USB index" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div data-aos="fade-left">
+          <label for="usd" class="block text-sm font-medium text-gray-700">USD:
+            <i data-tippy-content="The exchange rate of USD, which can influence gold prices." class="mdi mdi-information-outline text-gray-400 ml-1"></i>
+          </label>
+          <input type="text" id="usd" name="usd" required placeholder="Enter USD exchange rate" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+        </div>
+        <div class="col-span-2">
+          <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 ripple relative flex items-center justify-center h-10">
+            <span class="loading hidden"></span>
+            <span class="button-text">Predict</span>
+            <span class="predicting-text">Predicting...</span>
+          </button>
+        </div>
+      </form>
+      <div id="result" class="mt-4 font-bold text-center" data-aos="fade-up"></div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      tippy('[data-tippy-content]');
+      AOS.init({
+        duration: 1200,
+      });
+    </script>
+    <script src="../static/script.js"></script>
+  </body>
+</html>
